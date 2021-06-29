@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "712783546202",
+    "firebase_url": "https://send-asap.firebaseio.com",
+    "project_id": "send-asap",
+    "storage_bucket": "send-asap.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:712783546202:android:7e0ca8f7671c12e4b31563",
+        "android_client_info": {
+          "package_name": "com.send_asap.beta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "712783546202-96fmgoibrtu76k2jkqt5nkm41hkdddbr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJ5givpyjE0S4vrpgZ9sVPSbBPPMz3h_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "712783546202-96fmgoibrtu76k2jkqt5nkm41hkdddbr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

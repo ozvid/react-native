@@ -1,0 +1,42 @@
+{
+  "name": "functions",
+  "scripts": {
+    "lint": "tslint --project tsconfig.json",
+    "build": "tsc",
+    "serve": "npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@google-cloud/firestore": "^2.2.1",
+    "@types/nodemailer": "^6.2.2",
+    "@types/stripe": "^6.26.7",
+    "axios": "^0.19.0",
+    "crypto": "^1.0.1",
+    "expo-server-sdk": "^3.3.0",
+    "firebase-admin": "^8.10.0",
+    "firebase-functions": "^3.0.1",
+    "geofirex": "^0.1.0",
+    "grpc": "^1.21.1",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
+    "nexmo": "^2.5.2",
+    "node-fetch": "^2.6.0",
+    "nodemailer": "^6.3.1",
+    "rand-token": "^0.4.0",
+    "rxjs": "^6.5.5",
+    "stripe": "^7.1.0",
+    "twilio": "^3.31.1"
+  },
+  "devDependencies": {
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2"
+  },
+  "private": true
+}

@@ -1,0 +1,214 @@
+version: 2
+jobs:
+  install_deps:
+    docker:
+      - image: circleci/node:8.16.0
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run:
+          name: Installing yarn
+          command: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+  deploy_storybook:
+    docker:
+      - image: circleci/node:8.16.0
+    parallelism: 1
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run:
+          name: Installing yarn
+          command: yarn install
+      - run:
+          name: Installing exp
+          command: yarn global add exp
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+  deploy_branch:
+    docker:
+      - image: circleci/node:8.16.0
+    parallelism: 1
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run:
+          name: Installing yarn
+          command: yarn install
+      - run:
+          name: Installing exp
+          command: yarn global add exp
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Publish to branch Channel
+          command: |
+            export PATH="$PATH:$( yarn global bin )"
+            echo "${CIRCLE_BRANCH}"
+            ./scripts/expo_publish.sh -r "${CIRCLE_BRANCH}"
+  deploy_demo:
+    docker:
+      - image: circleci/node:8.16.0
+    parallelism: 1
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run:
+          name: Installing yarn
+          command: yarn install
+      - run:
+          name: Installing exp
+          command: yarn global add exp
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Publish to main Channel
+          command: |
+            export PATH="$PATH:$( yarn global bin )"
+            echo "${CIRCLE_BRANCH}"
+            ./scripts/expo_publish.sh
+
+  build_ios:
+    docker:
+      - image: circleci/node:8.16.0
+    parallelism: 1
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run:
+          name: Installing yarn
+          command: yarn install
+      - run:
+          name: Installing exp
+          command: yarn global add exp
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Build .ipa via Expo
+          command: |
+            export PATH="$PATH:$( yarn global bin )"
+            ./scripts/build_ios.sh
+      - save_cache:
+          paths:
+            - dist
+          key: dist-ios-{{ checksum "package.json" }}
+  dist_ios:
+    docker:
+      - image: circleci/node:8.16.0
+    parallelism: 1
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - dist-ios-{{ checksum "package.json" }}
+            - dist-ios-
+  build_android:
+    docker:
+      - image: circleci/node:8.16.0
+    parallelism: 1
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run:
+          name: Installing yarn
+          command: yarn install
+      - run:
+          name: Installing exp
+          command: yarn global add exp
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Build .apk via Expo
+          command: |
+            export PATH="$PATH:$( yarn global bin )"
+            ./scripts/build_android.sh
+      - save_cache:
+          paths:
+            - dist
+          key: dist-android-{{ checksum "package.json" }}
+  dist_android:
+    docker:
+      - image: circleci/node:8.16.0
+    parallelism: 1
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - dist-android-{{ checksum "package.json" }}
+            - dist-android-
+workflows:
+  version: 2
+  sprint:
+    jobs:
+      - install_deps:
+          filters:
+            branches:
+              only:
+                - /sprint-.*/
+      - deploy_branch:
+          requires:
+            - install_deps
+          filters:
+            branches:
+              only:
+                - /sprint-.*/
+      - deploy_storybook:
+          requires:
+            - install_deps
+          filters:
+            branches:
+              only:
+                - /sprint-.*/
+  demo:
+    jobs:
+      - install_deps:
+          filters:
+            branches:
+              only:
+                - production
+      - deploy_demo:
+          requires:
+            - install_deps
+          filters:
+            branches:
+              only:
+                - production

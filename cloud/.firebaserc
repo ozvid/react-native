@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "send-asap",
+    "prod": "sendasap-75568"
+  }
+}

@@ -1,0 +1,1 @@
+export const CHANGE_LOADER = "CHANGE_LOADER";
