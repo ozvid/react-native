@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "687518385346",
+    "firebase_url": "https://sendasap-75568.firebaseio.com",
+    "project_id": "sendasap-75568",
+    "storage_bucket": "sendasap-75568.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:687518385346:android:34b823382934264844675b",
+        "android_client_info": {
+          "package_name": "com.send_asap.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "687518385346-s00dir1e47k3d8mu960922sj1krm7fko.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.send_asap.app",
+            "certificate_hash": "54c11f1309383021ade954dc2d7292c0c601dd65"
+          }
+        },
+        {
+          "client_id": "687518385346-ppj43aop0bvmenrd4n4ns23k0feqlt1o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXKgODNakO3uXG22tPXwTHAy3ADtUKHtk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "687518385346-ppj43aop0bvmenrd4n4ns23k0feqlt1o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

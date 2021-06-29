@@ -1,0 +1,16 @@
+node_modules/**/*
+.expo/*
+npm-debug.*
+*.jks
+*.p12
+*.key
+*.mobileprovision
+.idea/**/*
+.idea
+.env
+.github
+.expo-shared
+firebase-debug.log
+yarn-error.log 
+ 
+.DS_Store

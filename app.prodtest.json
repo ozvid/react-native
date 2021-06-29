@@ -1,0 +1,68 @@
+{
+  "expo": {
+    "name": "SendASAP",
+    "slug": "send-asap",
+    "privacy": "public",
+    "scheme": "send-asap",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "version": "1.2.6",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.send-asap.app",
+      "buildNumber": "1.1",
+      "config": {
+        "usesNonExemptEncryption": false,
+        "googleMapsApiKey": "AIzaSyAtvbNw94SoXSLxnhjmOMep7seHfUXfXww"
+      },
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Your location will be used to help track the pickup place and match the nearest delivery partner.",
+        "NSCameraUsageDescription": "Camera will be used to take pictures of packages"
+      }
+    },
+    "android": {
+      "package": "com.send_asap.app",
+      "versionCode": 32,
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyAtvbNw94SoXSLxnhjmOMep7seHfUXfXww"
+        }
+      },
+      "googleServicesFile": "./google-services.json"
+    },
+    "description": "",
+    "extra": {
+      "googleMaps": {
+        "apiKey": "AIzaSyAtvbNw94SoXSLxnhjmOMep7seHfUXfXww"
+      },
+      "firebase": {
+        "apiKey": "AIzaSyAUXwwekvtKfPbxVZuEbchXLb9Mx2u8H20",
+        "authDomain": "sendasap-75568.firebaseapp.com",
+        "databaseURL": "https://sendasap-75568.firebaseio.com",
+        "projectId": "sendasap-75568",
+        "storageBucket": "sendasap-75568.appspot.com",
+        "messagingSenderId": "687518385346",
+        "appId": "1:687518385346:web:c055197278f8432844675b",
+        "measurementId": "G-H3X9STYYJ9"
+      },
+      "stripe": {
+        "client_id": "ca_FvHZXOhvKEwEvLFGJUV7hsYoDGAmUlGY"
+      }
+    }
+  }
+}
